@@ -225,8 +225,8 @@ const coreValues = [
 ];
 
 const stats = [
-  { n: 500, suffix: "+", label: "Successful Projects" },
-  { n: 200, suffix: "+", label: "Happy Clients" },
+  { n: 150, suffix: "+", label: "Successful Projects" },
+  { n: 50, suffix: "+", label: "Happy Clients" },
   { n: 15, suffix: "+", label: "Industries Served" },
   { n: 24, suffix: "/7", label: "Technical Support" },
   { n: 99, suffix: "%", label: "Customer Satisfaction" },
