@@ -330,7 +330,7 @@ function Hero() {
                 alt="LED display"
                 width={1280}
                 height={1024}
-                className="block w-full h-auto rounded-2xl object-cover"
+                className="block w-full min-w-full h-auto rounded-3xl object-cover"
               />
             </div>
             <div
