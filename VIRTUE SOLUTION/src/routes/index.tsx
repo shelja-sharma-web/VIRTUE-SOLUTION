@@ -317,7 +317,7 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative mx-auto w-full max-w-[680px] lg:max-w-none"
+          className="relative mx-auto w-full"
         >
           <div className="relative animate-float mx-auto w-full">
             <div
@@ -330,7 +330,7 @@ function Hero() {
                 alt="LED display"
                 width={1280}
                 height={1024}
-                className="w-full max-w-full h-auto rounded-2xl object-cover"
+                className="block w-full h-auto rounded-2xl object-cover"
               />
             </div>
             <div
