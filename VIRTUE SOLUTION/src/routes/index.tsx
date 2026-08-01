@@ -159,7 +159,7 @@ function Hero() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="order-1"
+          className="order-1 min-w-0"
         >
           <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-medium tracking-wider text-[var(--neon)] uppercase">
             <span className="h-2 w-2 rounded-full bg-[var(--neon)] animate-pulse-glow" /> Smart
@@ -193,7 +193,7 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative mx-auto w-full min-w-0 order-2 lg:row-span-2"
+          className="relative mx-auto w-full min-w-0 max-w-[560px] order-2 lg:row-span-2"
         >
           <div className="relative lg:animate-float mx-auto w-full">
             <div
@@ -251,7 +251,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="order-3"
+          className="order-3 min-w-0 w-full"
         >
           <Eyebrow>Why Choose Us</Eyebrow>
           <h2 className="mt-3 font-display text-2xl font-bold leading-tight sm:text-3xl md:text-5xl">
