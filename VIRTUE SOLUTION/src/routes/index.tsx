@@ -317,20 +317,20 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative"
+          className="relative mx-auto w-full max-w-[680px] lg:max-w-none"
         >
-          <div className="relative animate-float">
+          <div className="relative animate-float mx-auto w-full">
             <div
               className="absolute inset-0 -z-10 rounded-3xl blur-3xl"
               style={{ background: "var(--gradient-neon)", opacity: 0.3 }}
             />
-            <div className="overflow-hidden rounded-3xl glass-strong p-2 shadow-2xl">
+            <div className="overflow-hidden rounded-3xl glass-strong p-2 shadow-2xl w-full">
               <img
                 src={heroImg}
                 alt="LED display"
                 width={1280}
                 height={1024}
-                className="w-full rounded-2xl"
+                className="w-full max-w-full h-auto rounded-2xl object-cover"
               />
             </div>
             <div
