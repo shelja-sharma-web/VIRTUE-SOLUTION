@@ -129,31 +129,6 @@ function Magnetic({ children, className = "" }: { children: React.ReactNode; cla
 function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 800], [0, 200]);
-  const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    const el = mobileCarouselRef.current;
-    if (!el) return;
-    let rafId = 0;
-    let pos = 0;
-    const step = () => {
-      pos += 0.5;
-      if (pos >= el.scrollWidth - el.clientWidth) pos = 0;
-      el.scrollLeft = pos;
-      rafId = requestAnimationFrame(step);
-    };
-    const start = () => {
-      if (window.innerWidth < 768) rafId = requestAnimationFrame(step);
-    };
-    const stop = () => cancelAnimationFrame(rafId);
-    el.addEventListener("pointerenter", stop);
-    el.addEventListener("pointerleave", start);
-    start();
-    return () => {
-      stop();
-      el.removeEventListener("pointerenter", stop);
-      el.removeEventListener("pointerleave", start);
-    };
-  }, [mobileCarouselRef]);
   return (
     <section className="relative min-h-screen overflow-hidden pt-24 pb-12 md:pt-32 md:pb-20">
       <div className="absolute inset-0 grid-bg opacity-30" />
@@ -178,10 +153,12 @@ function Hero() {
       </motion.div>
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-4 md:gap-12 lg:grid-cols-2 lg:items-center">
+        {/* ---- Left: Heading + CTA ---- */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="order-1"
         >
           <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-medium tracking-wider text-[var(--neon)] uppercase">
             <span className="h-2 w-2 rounded-full bg-[var(--neon)] animate-pulse-glow" /> Smart
@@ -208,123 +185,21 @@ function Hero() {
               </Link>
             </Magnetic>
           </div>
-
-          <div className="mt-6 md:mt-8">
-            <Eyebrow>Why Choose Us</Eyebrow>
-            <h2 className="mt-3 font-display text-2xl font-bold leading-tight sm:text-3xl md:text-5xl">
-              Innovation, Quality &<br />
-              <span className="neon-text">Service You Can Trust</span>
-            </h2>
-
-            <div className="mt-4">
-              {/* Desktop: premium horizontal marquee */}
-              <div className="hidden lg:block overflow-hidden">
-                <div className="flex gap-12 animate-marquee whitespace-nowrap">
-                  {[...Array(2)].map((_, i) => (
-                    <div key={i} className="flex items-center gap-12 pr-12">
-                      {[
-                        "Meta Big Bazaar",
-                        "Mitraa Cafe & Couture",
-                        "Fashion Swag",
-                        "Kalyan Jewellers",
-                        "Gold Palace",
-                        "Raniwala Jeweller",
-                        "Pro Ultimate Gym",
-                        "New Me",
-                      ].map((b) => (
-                        <motion.span
-                          key={b}
-                          whileHover={{ scale: 1.02 }}
-                          className="group font-display text-xl font-semibold text-white/40 transition-colors"
-                          style={{ WebkitFontSmoothing: "antialiased" }}
-                        >
-                          <span className="transition-colors group-hover:neon-text group-hover:text-transparent">
-                            {b}
-                          </span>
-                        </motion.span>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tablet: two rows */}
-              <div className="hidden md:grid lg:hidden grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                {[
-                  ["Meta Big Bazaar", "Mitraa Cafe & Couture", "Fashion Swag", "Kalyan Jewellers"],
-                  ["Gold Palace", "Raniwala Jeweller", "Pro Ultimate Gym", "New Me"],
-                ].map((row, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="flex gap-6 items-center"
-                  >
-                    {row.map((b) => (
-                      <div key={b} className="glass rounded-lg px-4 py-3">
-                        <motion.div
-                          whileHover={{ scale: 1.02 }}
-                          className="font-display text-base font-semibold text-white/40 group"
-                        >
-                          <span className="group-hover:neon-text group-hover:text-transparent">
-                            {b}
-                          </span>
-                        </motion.div>
-                      </div>
-                    ))}
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Mobile: swipeable carousel with auto-scroll */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="md:hidden mt-4"
-              >
-                <div
-                  ref={mobileCarouselRef}
-                  className="-mx-4 overflow-x-auto snap-x snap-mandatory flex gap-4 px-4 py-2 touch-pan-x scrollbar-none"
-                >
-                  {[
-                    "Meta Big Bazaar",
-                    "Mitraa Cafe & Couture",
-                    "Fashion Swag",
-                    "Kalyan Jewellers",
-                    "Gold Palace",
-                    "Raniwala Jeweller",
-                    "Pro Ultimate Gym",
-                    "New Me",
-                  ].map((b) => (
-                    <div
-                      key={b}
-                      className="snap-start shrink-0 min-w-[55%] sm:min-w-[45%] glass rounded-xl px-3 py-4"
-                    >
-                      <div className="font-display text-sm font-semibold text-white/40 sm:text-lg">
-                        {b}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
         </motion.div>
 
+        {/* ---- Right: Hero Image ---- */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative mx-auto w-full min-w-0 max-w-[500px] lg:max-w-none"
+          className="relative mx-auto w-full min-w-0 order-2 lg:row-span-2"
         >
           <div className="relative lg:animate-float mx-auto w-full">
             <div
               className="absolute inset-0 -z-10 rounded-2xl blur-3xl sm:rounded-3xl"
               style={{ background: "var(--gradient-neon)", opacity: 0.3 }}
             />
-            <div className="overflow-hidden rounded-2xl glass-strong shadow-2xl w-full aspect-[16/10] sm:aspect-[16/9] sm:rounded-3xl">
+            <div className="overflow-hidden rounded-2xl glass-strong shadow-2xl w-full aspect-[16/10] sm:rounded-3xl">
               <img
                 src={heroImg}
                 alt="LED display"
@@ -344,7 +219,7 @@ function Hero() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="absolute -right-2 top-1/2 -translate-y-1/2 hidden md:block"
+            className="absolute -right-2 top-1/2 -translate-y-1/2 hidden lg:block"
           >
             <div
               className="glass-strong space-y-4 rounded-2xl p-4 backdrop-blur-2xl"
@@ -368,6 +243,50 @@ function Hero() {
               ))}
             </div>
           </motion.div>
+        </motion.div>
+
+        {/* ---- Why Choose Us + Brands (below heading on desktop, below image on mobile) ---- */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="order-3"
+        >
+          <Eyebrow>Why Choose Us</Eyebrow>
+          <h2 className="mt-3 font-display text-2xl font-bold leading-tight sm:text-3xl md:text-5xl">
+            Innovation, Quality &<br />
+            <span className="neon-text">Service You Can Trust</span>
+          </h2>
+
+          <div className="mt-4 overflow-hidden">
+            <div className="flex gap-8 sm:gap-12 animate-marquee whitespace-nowrap">
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="flex items-center gap-8 sm:gap-12 pr-8 sm:pr-12">
+                  {[
+                    "Meta Big Bazaar",
+                    "Mitraa Cafe & Couture",
+                    "Fashion Swag",
+                    "Kalyan Jewellers",
+                    "Gold Palace",
+                    "Raniwala Jeweller",
+                    "Pro Ultimate Gym",
+                    "New Me",
+                  ].map((b) => (
+                    <motion.span
+                      key={b}
+                      whileHover={{ scale: 1.02 }}
+                      className="group font-display text-sm sm:text-base lg:text-xl font-semibold text-white/40 transition-colors"
+                      style={{ WebkitFontSmoothing: "antialiased" }}
+                    >
+                      <span className="transition-colors group-hover:neon-text group-hover:text-transparent">
+                        {b}
+                      </span>
+                    </motion.span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
