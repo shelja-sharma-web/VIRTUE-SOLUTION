@@ -45,7 +45,7 @@ export function Navbar() {
               src="/virtue-logo.png"
               alt="Virtue Solutions"
               height={64}
-              className="h-[64px] sm:h-[72px] md:h-[80px] w-auto object-contain"
+              className="h-[48px] sm:h-[64px] md:h-[80px] w-auto object-contain"
             />
             <div className="leading-tight hidden sm:block">
               <div className="font-display text-lg font-bold tracking-tight">VIRTUE</div>

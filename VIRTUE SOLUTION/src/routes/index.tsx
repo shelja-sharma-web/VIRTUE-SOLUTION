@@ -155,7 +155,7 @@ function Hero() {
     };
   }, [mobileCarouselRef]);
   return (
-    <section className="relative min-h-screen overflow-hidden pt-32 pb-20">
+    <section className="relative min-h-screen overflow-hidden pt-24 pb-12 md:pt-32 md:pb-20">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <motion.div
         aria-hidden
@@ -177,7 +177,7 @@ function Hero() {
         />
       </motion.div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-2 lg:items-center">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-4 md:gap-12 lg:grid-cols-2 lg:items-center">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -187,18 +187,18 @@ function Hero() {
             <span className="h-2 w-2 rounded-full bg-[var(--neon)] animate-pulse-glow" /> Smart
             Visual Solutions
           </span>
-          <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] md:text-6xl lg:text-7xl">
+          <h1 className="mt-4 font-display text-[2rem] font-bold leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl">
             Transform Spaces
             <br />
             With Smart
             <br />
             <span className="neon-text">Digital Signage</span>
           </h1>
-          <p className="mt-6 max-w-lg text-base text-white/70 md:text-lg">
+          <p className="mt-4 max-w-lg text-sm text-white/70 sm:text-base md:text-lg">
             Engage your audience, elevate your brand and deliver immersive experiences with
             innovative digital signage solutions.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-6 flex flex-wrap items-center gap-4">
             <Magnetic>
               <Link
                 to="/products"
@@ -209,9 +209,9 @@ function Hero() {
             </Magnetic>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-6 md:mt-8">
             <Eyebrow>Why Choose Us</Eyebrow>
-            <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">
+            <h2 className="mt-3 font-display text-2xl font-bold leading-tight sm:text-3xl md:text-5xl">
               Innovation, Quality &<br />
               <span className="neon-text">Service You Can Trust</span>
             </h2>
@@ -300,9 +300,9 @@ function Hero() {
                   ].map((b) => (
                     <div
                       key={b}
-                      className="snap-start min-w-[65%] sm:min-w-[45%] glass rounded-2xl px-4 py-6"
+                      className="snap-start shrink-0 min-w-[55%] sm:min-w-[45%] glass rounded-xl px-3 py-4"
                     >
-                      <div className="font-display text-lg font-semibold text-white/40 group-hover:neon-text group-hover:text-transparent">
+                      <div className="font-display text-sm font-semibold text-white/40 sm:text-lg">
                         {b}
                       </div>
                     </div>
@@ -317,14 +317,14 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative mx-auto w-full min-w-0"
+          className="relative mx-auto w-full min-w-0 max-w-[500px] lg:max-w-none"
         >
-          <div className="relative animate-float mx-auto w-full max-w-full">
+          <div className="relative lg:animate-float mx-auto w-full">
             <div
-              className="absolute inset-0 -z-10 rounded-3xl blur-3xl"
+              className="absolute inset-0 -z-10 rounded-2xl blur-3xl sm:rounded-3xl"
               style={{ background: "var(--gradient-neon)", opacity: 0.3 }}
             />
-            <div className="overflow-hidden rounded-3xl glass-strong shadow-2xl w-full max-w-full aspect-[4/3] sm:aspect-[16/9]">
+            <div className="overflow-hidden rounded-2xl glass-strong shadow-2xl w-full aspect-[16/10] sm:aspect-[16/9] sm:rounded-3xl">
               <img
                 src={heroImg}
                 alt="LED display"
