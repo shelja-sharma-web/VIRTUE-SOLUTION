@@ -137,6 +137,7 @@ function Hero() {
         style={{ y }}
         className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full opacity-30 blur-3xl"
       >
+        
         <div
           className="h-full w-full rounded-full"
           style={{ background: "radial-gradient(circle, rgba(0,217,255,0.6), transparent 70%)" }}
