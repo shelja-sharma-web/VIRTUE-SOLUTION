@@ -161,6 +161,7 @@ function Hero() {
           transition={{ duration: 0.8 }}
           className="order-1"
         >
+          
           <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-medium tracking-wider text-[var(--neon)] uppercase">
             <span className="h-2 w-2 rounded-full bg-[var(--neon)] animate-pulse-glow" /> Smart
             Visual Solutions
